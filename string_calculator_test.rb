@@ -11,4 +11,9 @@ class StringCalculatorTest < Minitest::Test
     calculator = StringCalculator.new
     assert_equal 1, calculator.add("1")
   end
+
+  def test_two_numbers_are_summed
+    calculator = StringCalculator.new
+    assert_equal 3, calculator.add("1,2")
+  end
 end
