@@ -22,4 +22,10 @@ class StringCalculatorTest < Minitest::Test
     assert_equal 10, calculator.add("1,2,3,4")
     assert_equal 16, calculator.add("1,2,3,4,6")
   end
+
+  def test_new_lines_are_treated_as_delimiters
+    calculator = StringCalculator.new
+    assert_equal 6, calculator.add("1\n2,3")
+    assert_equal 10, calculator.add("2\n3\n5")
+  end
 end
