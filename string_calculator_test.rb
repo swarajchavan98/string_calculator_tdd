@@ -26,6 +26,12 @@ class StringCalculatorTest < Minitest::Test
   def test_new_lines_are_treated_as_delimiters
     calculator = StringCalculator.new
     assert_equal 6, calculator.add("1\n2,3")
-    assert_equal 10, calculator.add("2\n3\n5")
+    assert_equal 12, calculator.add("2\n3\n7")
+  end
+
+  def test_custom_delimiter_is_supported
+    calculator = StringCalculator.new
+    assert_equal 4, calculator.add("//;\n2;2")
+    assert_equal 10, calculator.add("//-\n1-2-3-4")
   end
 end
