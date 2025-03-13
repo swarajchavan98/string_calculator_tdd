@@ -34,4 +34,13 @@ class StringCalculatorTest < Minitest::Test
     assert_equal 4, calculator.add("//;\n2;2")
     assert_equal 10, calculator.add("//-\n1-2-3-4")
   end
+
+  def test_negative_numbers_raise_an_exception
+    calculator = StringCalculator.new
+    error = assert_raises(RuntimeError) { calculator.add("1,-2,3") }
+    assert_equal "negative numbers are not allowed: -2", error.message
+
+    error = assert_raises(RuntimeError) { calculator.add("-1,-2,-3") }
+    assert_equal "negative numbers are not allowed: -1, -2, -3", error.message
+  end
 end
